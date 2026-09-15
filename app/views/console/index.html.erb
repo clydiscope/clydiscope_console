@@ -29,7 +29,9 @@
 
         <div class="response-box">
         <% if @response.present? %>
-            <p><%= @response %></p>
+            <p><strong>Status:</strong> <%= @response[:status] %></p>
+            <p><strong>Time:</strong> <%= @response[:timestamp] %></p>
+            <p><strong>Reply:</strong> <%= @response[:text] %></p>
         <% else %>
             <p>Clydiscope Console is online.</p>
         <% end %>
