@@ -4,7 +4,11 @@ class ConsoleController < ApplicationController
 
   def submit
     @prompt = params[:prompt]
-    @response = "You entered: #{@prompt}"
+      @response = {
+        status: "complete",
+        timestamp: Time.current.strftime("%Y-%m-%d %H:%M:%S"),
+        text: "You entered: #{@prompt}"
+    }
 
     render :index
   end
