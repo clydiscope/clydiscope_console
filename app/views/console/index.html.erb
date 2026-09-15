@@ -1,0 +1,40 @@
+<div class="console-shell">
+  <header>
+    <p class="eyebrow">CLYDISCOPE AI STUDIO</p>
+    <h1>Clydiscope Console</h1>
+    <p class="subtitle">
+      A local control surface for AI, creative tools, and whatever ridiculous machine we build next.
+    </p>
+  </header>
+
+  <main>
+    <section class="prompt-panel">
+    <%= form_with url: "/console/submit",
+              method: :post,
+              data: { turbo_frame: "response" } do |form| %>
+        <%= form.label :prompt, "What do you want to make?" %>
+
+        <%= form.text_area :prompt,
+          rows: 8,
+          placeholder: "Describe an idea, task, visual, sound, workflow...",
+          value: @prompt %>
+
+        <%= form.submit "Send" %>
+      <% end %>
+    </section>
+
+    <%= turbo_frame_tag "response" do %>
+    <section class="response-panel">
+        <p class="response-label">RESPONSE</p>
+
+        <div class="response-box">
+        <% if @response.present? %>
+            <p><%= @response %></p>
+        <% else %>
+            <p>Clydiscope Console is online.</p>
+        <% end %>
+        </div>
+    </section>
+    <% end %>
+  </main>
+</div>
