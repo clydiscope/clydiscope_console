@@ -1,0 +1,93 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+
+ body {
+  margin: 0;
+  background: #0c0c0f;
+  color: #f3f3f5;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.console-shell {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 72px 24px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  opacity: 0.55;
+}
+
+h1 {
+  font-size: 56px;
+  margin: 8px 0 12px;
+}
+
+.subtitle {
+  max-width: 620px;
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.75;
+}
+
+main {
+  margin-top: 48px;
+}
+
+.prompt-panel,
+.response-panel {
+  background: #16161b;
+  border: 1px solid #292931;
+  border-radius: 18px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+label,
+.response-label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+  background: #0f0f13;
+  color: white;
+  border: 1px solid #30303a;
+  border-radius: 12px;
+  padding: 16px;
+  font: inherit;
+  font-size: 16px;
+}
+
+button {
+  margin-top: 16px;
+  padding: 12px 22px;
+  border: 0;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.response-box {
+  min-height: 100px;
+  padding: 16px;
+  background: #0f0f13;
+  border-radius: 12px;
+  line-height: 1.6;
+}
