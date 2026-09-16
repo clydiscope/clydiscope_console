@@ -33,7 +33,9 @@
             <p><strong>Time:</strong> <%= @response[:timestamp] %></p>
             <p><strong>Model:</strong> <%= @response[:model] %></p>
             <p><strong>Latency:</strong> <%= @response[:latency_ms] %> ms</p>
-            <p><strong>Reply:</strong> <%= @response[:text] %></p>
+            <div class="markdown-response">
+                <%= render_markdown(@response[:text]) %>
+            </div>
         <% else %>
             <p>Clydiscope Console is online.</p>
         <% end %>
