@@ -140,3 +140,19 @@ input[type="submit"] {
 .message.user .message-content {
   font-size: 1.05rem;
 }
+
+.new-conversation-link {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  color: #f3f3f5;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-decoration: none;
+  opacity: 0.55;
+}
+
+.new-conversation-link:hover {
+  opacity: 1;
+}
