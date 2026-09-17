@@ -2,14 +2,16 @@ require "net/http"
 require "json"
 
 class ConsoleResponder
-  def initialize(prompt)
+  def initialize(prompt, conversation:)
     @prompt = prompt
+    @conversation = conversation
   end
 
 def call
     started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 
     response = ask_qwen
+    @conversation.update(response_id: response["response_id"]) if response["response_id"].present?
 
     finished_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 
@@ -24,17 +26,30 @@ def call
 
 
   private
-  
+
+def conversation_history
+  @conversation.messages.order(:created_at).map do |message|
+    {
+      role: message.role,
+      content: message.content
+    }
+  end
+end
+
 def ask_qwen
     uri = URI("http://127.0.0.1:1234/api/v1/chat")
 
     request = Net::HTTP::Post.new(uri)
     request["Content-Type"] = "application/json"
 
-    request.body = {
+    body = {
       model: "qwen/qwen3-1.7b",
       input: @prompt
-    }.to_json
+    }
+
+    body[:previous_response_id] = @conversation.response_id if @conversation.response_id.present?
+    
+    request.body = body.to_json
 
     response = Net::HTTP.start(uri.hostname, uri.port) do |http|
       http.request(request)
