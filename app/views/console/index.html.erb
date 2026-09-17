@@ -21,24 +21,23 @@
 
         <%= form.text_area :prompt,
           rows: 8,
-          placeholder: "Describe an idea, task, visual, sound, workflow...",
-          value: @prompt %>
+          placeholder: "Describe an idea, task, visual, sound, workflow..."
+        %>
 
         <%= form.submit "Send" %>
       <% end %>
     </section>
 
     <section class="response-panel">
-        <p class="response-label">RESPONSE</p>
-
         <div class="response-box">
 
         <% if @conversation.present? && @conversation.messages.any? %>
             <div class="conversation-history">
-                <h3>Conversation History</h3>
                 <% @conversation.messages.order(:created_at).each do |message| %>
                     <div class="message <%= message.role %>">
-                        <p><strong><%= message.role.capitalize %>:</strong></p>
+                        <p class="message-label">
+                            <%= message.role == "user" ? "CLYDE" : "QWEN" %>
+                        </p>
                         <div class="message-content">
                             <%= render_markdown(message.content) %>
                         </div>
@@ -52,8 +51,6 @@
             <p><strong>Time:</strong> <%= @response[:timestamp] %></p>
             <p><strong>Model:</strong> <%= @response[:model] %></p>
             <p><strong>Latency:</strong> <%= @response[:latency_ms] %> ms</p>
-        <% else %>
-            <p>Clydiscope Console is online.</p>
         <% end %>
         </div>
     </section>

@@ -44,22 +44,27 @@ main {
   margin-top: 48px;
 }
 
-.prompt-panel,
 .response-panel {
-  background: #16161b;
-  border: 1px solid #292931;
-  border-radius: 18px;
-  padding: 24px;
+  padding: 40px 0;
   margin-bottom: 24px;
+}
+
+.prompt-panel {
+  padding: 24px 0;
+  margin-bottom: 24px;
+  border-top: 1px solid #292931;
+  border-bottom: 1px solid #292931;
 }
 
 label,
 .response-label {
   display: block;
-  margin-bottom: 12px;
-  font-size: 13px;
+  margin-bottom: 16px;
+  font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.55;
 }
 
 textarea {
@@ -75,19 +80,63 @@ textarea {
   font-size: 16px;
 }
 
-button {
+button,
+input[type="submit"] {
   margin-top: 16px;
   padding: 12px 22px;
-  border: 0;
+  border: 1px solid #3a3a42;
   border-radius: 999px;
-  font-weight: 700;
+  background: transparent;
+  color: #f3f3f5;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   cursor: pointer;
 }
 
 .response-box {
   min-height: 100px;
-  padding: 16px;
-  background: #0f0f13;
-  border-radius: 12px;
+  padding: 0;
+  background: transparent;
   line-height: 1.6;
+}
+
+
+
+.message-label {
+  margin: 0 0 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.message {
+  max-width: 75%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+}
+
+.message.user {
+  margin-left: auto;
+  text-align: right;
+}
+
+.message.assistant {
+  margin-right: auto;
+  text-align: left;
+}
+
+.message-content {
+  font-size: 1rem;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.message.user .message-content {
+  font-size: 1.05rem;
 }
