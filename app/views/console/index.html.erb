@@ -8,10 +8,15 @@
   </header>
 
   <main>
+    <%= turbo_frame_tag "response" do %>
+
     <section class="prompt-panel">
-    <%= form_with url: "/console/submit",
-              method: :post,
-              data: { turbo_frame: "response" } do |form| %>
+        <%= form_with url: "/console/submit",
+                method: :post,
+                data: { turbo_frame: "response" } do |form| %>
+        <%= form.hidden_field :conversation_id,
+            value: @conversation&.id,
+            id: "conversation_id" %>        
         <%= form.label :prompt, "What do you want to make?" %>
 
         <%= form.text_area :prompt,
@@ -23,7 +28,6 @@
       <% end %>
     </section>
 
-    <%= turbo_frame_tag "response" do %>
     <section class="response-panel">
         <p class="response-label">RESPONSE</p>
 

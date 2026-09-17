@@ -4,7 +4,14 @@ class ConsoleController < ApplicationController
 
   def submit
     @prompt = params[:prompt]
-      @response = ConsoleResponder.new(@prompt).call
+
+    if params[:conversation_id].present?
+      @conversation = Conversation.find(params[:conversation_id])
+    else
+      @conversation = Conversation.create!
+    end
+          
+    @response = ConsoleResponder.new(@prompt, conversation: @conversation).call
 
     render :index
   end
