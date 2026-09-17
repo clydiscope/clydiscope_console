@@ -10,9 +10,12 @@ class ConsoleController < ApplicationController
     else
       @conversation = Conversation.create!
     end
-          
+
+    @conversation.messages.create!(role: "user", content: @prompt)
+
     @response = ConsoleResponder.new(@prompt, conversation: @conversation).call
 
+    @conversation.messages.create!(role: "assistant", content: @response[:text])
     render :index
   end
 end
