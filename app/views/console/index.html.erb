@@ -32,14 +32,26 @@
         <p class="response-label">RESPONSE</p>
 
         <div class="response-box">
+
+        <% if @conversation.present? && @conversation.messages.any? %>
+            <div class="conversation-history">
+                <h3>Conversation History</h3>
+                <% @conversation.messages.order(:created_at).each do |message| %>
+                    <div class="message <%= message.role %>">
+                        <p><strong><%= message.role.capitalize %>:</strong></p>
+                        <div class="message-content">
+                            <%= render_markdown(message.content) %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+
         <% if @response.present? %>
             <p><strong>Status:</strong> <%= @response[:status] %></p>
             <p><strong>Time:</strong> <%= @response[:timestamp] %></p>
             <p><strong>Model:</strong> <%= @response[:model] %></p>
             <p><strong>Latency:</strong> <%= @response[:latency_ms] %> ms</p>
-            <div class="markdown-response">
-                <%= render_markdown(@response[:text]) %>
-            </div>
         <% else %>
             <p>Clydiscope Console is online.</p>
         <% end %>
