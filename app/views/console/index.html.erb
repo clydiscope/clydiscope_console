@@ -7,7 +7,14 @@
     </p>
   </header>
     <%= link_to "NEW CONVERSATION", root_path, class: "new-conversation-link" %>
-  <main>
+  
+    <div class="conversation-list">
+        <% @conversations.each do |conversation| %>
+            <%= link_to "Conversation #{conversation.id}", conversation_path(conversation) %>
+        <% end %>
+    </div>
+  
+    <main>
     <%= turbo_frame_tag "response" do %>
 
     <section class="prompt-panel">
