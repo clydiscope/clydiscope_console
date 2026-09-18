@@ -59,13 +59,14 @@
   </main>
 
     <aside class="conversation-sidebar">
-        <%= link_to "NEW CONVERSATION", root_path, class: "new-conversation-link" %>
+        <%= link_to "NEW CONVERSATION", root_path, class: "new-conversation-link", data: { turbo_frame: "response" } %>
 
         <div class="conversation-list">
             <% @conversations.each do |conversation| %>
             <%= link_to "Conversation #{conversation.id}",
                 conversation_path(conversation),
-                class: "conversation-link"
+                class: "conversation-link",
+                data: { turbo_frame: "response" }
             %>
             <% end %>
         </div>
