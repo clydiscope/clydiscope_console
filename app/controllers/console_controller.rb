@@ -4,12 +4,13 @@ class ConsoleController < ApplicationController
   end
 
   def submit
+    @conversations = Conversation.order(created_at: :desc)
     @prompt = params[:prompt]
 
     if params[:conversation_id].present?
       @conversation = Conversation.find(params[:conversation_id])
     else
-      @conversation = Conversation.create!
+      @conversation = Conversation.create!(title: @prompt.truncate(30))
     end
 
     @conversation.messages.create!(role: "user", content: @prompt)

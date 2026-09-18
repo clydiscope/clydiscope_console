@@ -63,7 +63,7 @@
 
         <div class="conversation-list">
             <% @conversations.each do |conversation| %>
-            <%= link_to "Conversation #{conversation.id}",
+            <%= link_to conversation.title,
                 conversation_path(conversation),
                 class: "conversation-link",
                 data: { turbo_frame: "response" }
