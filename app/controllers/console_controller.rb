@@ -1,5 +1,6 @@
 class ConsoleController < ApplicationController
   def index
+    @conversations = Conversation.order(created_at: :desc)
   end
 
   def submit
@@ -16,6 +17,12 @@ class ConsoleController < ApplicationController
     @response = ConsoleResponder.new(@prompt, conversation: @conversation).call
 
     @conversation.messages.create!(role: "assistant", content: @response[:text])
+    render :index
+  end
+
+  def show
+    @conversation = Conversation.find(params[:id])
+    @conversations = Conversation.order(created_at: :desc)
     render :index
   end
 end

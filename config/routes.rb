@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "console#index"
   post "console/submit", to: "console#submit"
+  get "conversations/:id", to: "console#show", as: :conversation
 end
