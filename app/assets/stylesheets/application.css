@@ -22,6 +22,17 @@
   padding: 72px 24px;
 }
 
+.console-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+.console-layout main {
+  flex: 1;
+  min-width: 0;
+}
+
 .eyebrow {
   font-size: 12px;
   letter-spacing: 0.18em;
@@ -155,6 +166,12 @@ input[type="submit"] {
 
 .new-conversation-link:hover {
   opacity: 1;
+}
+
+.conversation-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  text-align: right;
 }
 
 .conversation-list {
