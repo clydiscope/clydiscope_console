@@ -10,7 +10,9 @@
   
     <div class="conversation-list">
         <% @conversations.each do |conversation| %>
-            <%= link_to "Conversation #{conversation.id}", conversation_path(conversation) %>
+            <%= link_to "Conversation #{conversation.id}", 
+                conversation_path(conversation), class: "conversation-link" 
+            %>
         <% end %>
     </div>
   
