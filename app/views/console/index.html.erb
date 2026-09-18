@@ -1,20 +1,12 @@
 <div class="console-shell">
-  <header>
-    <p class="eyebrow">CLYDISCOPE AI STUDIO</p>
-    <h1>Clydiscope Console</h1>
-    <p class="subtitle">
-      A local control surface for AI, creative tools, and whatever ridiculous machine we build next.
-    </p>
-  </header>
-    <%= link_to "NEW CONVERSATION", root_path, class: "new-conversation-link" %>
-  
-    <div class="conversation-list">
-        <% @conversations.each do |conversation| %>
-            <%= link_to "Conversation #{conversation.id}", 
-                conversation_path(conversation), class: "conversation-link" 
-            %>
-        <% end %>
-    </div>
+    <header>
+        <p class="eyebrow">CLYDISCOPE AI STUDIO</p>
+        <h1>Clydiscope Console</h1>
+        <p class="subtitle">
+        A local control surface for AI, creative tools, and whatever ridiculous machine we build next.
+        </p>
+    </header>
+    <div class="console-layout">
   
     <main>
     <%= turbo_frame_tag "response" do %>
@@ -65,4 +57,18 @@
     </section>
     <% end %>
   </main>
+
+    <aside class="conversation-sidebar">
+        <%= link_to "NEW CONVERSATION", root_path, class: "new-conversation-link" %>
+
+        <div class="conversation-list">
+            <% @conversations.each do |conversation| %>
+            <%= link_to "Conversation #{conversation.id}",
+                conversation_path(conversation),
+                class: "conversation-link"
+            %>
+            <% end %>
+        </div>
+    </aside>
+    </div>
 </div>
