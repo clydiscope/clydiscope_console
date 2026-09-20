@@ -37,7 +37,7 @@ def conversation_history
 end
 
 def ask_qwen
-    uri = URI("http://127.0.0.1:1234/api/v1/chat")
+    uri = URI("http://127.0.0.1:1235/api/v1/chat")
 
     request = Net::HTTP::Post.new(uri)
     request["Content-Type"] = "application/json"
