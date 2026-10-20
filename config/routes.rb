@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get "/fabrication", to: "fabrications#index"
+  post "/fabrication", to: "fabrications#create"
+  get "/fabrication/download", to: "fabrications#download"
+
   get "console/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
