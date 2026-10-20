@@ -1,0 +1,2 @@
+module FabricationsHelper
+end

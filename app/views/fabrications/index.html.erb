@@ -1,0 +1,31 @@
+<h1>Clydiscope Fabrication Studio</h1>
+
+<p>What would you like to fabricate?</p>
+
+<%= form_with url: "/fabrication",
+              method: :post,
+              data: { turbo: false } do |form| %>
+  <%= form.label :prompt, "Fabrication instruction" %>
+
+  <%= form.text_field :prompt,
+      value: "Make me a 20 mm cube" %>
+
+  <%= form.submit "Generate STL" %>
+
+  
+<% end %>
+
+<% if @result %>
+  <h2>Fabrication Result</h2>
+
+  <p>Operation: <%= @result["operation"] %></p>
+  <p>Size: <%= @result["size_mm"] %> mm</p>
+  <p>Status: <%= @result["status"] %></p>
+
+<% if @result["status"] == "completed" %>
+  <p>STL generated successfully!</p>
+
+  <%= link_to "Download STL",
+      "/fabrication/download" %>
+<% end %>
+<% end %>
