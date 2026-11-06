@@ -1,0 +1,2 @@
+class InvalidAIResponseError < StandardError
+end

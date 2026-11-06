@@ -1,3 +1,9 @@
+class InvalidAIResponseError < StandardError
+end
+
+class InvalidFabricationCommandError < StandardError
+end
+
 class FabricationOrchestrator
   def create(prompt)
     response = FabricationInterpreter.new.interpret(prompt)
@@ -9,10 +15,9 @@ class FabricationOrchestrator
     validator = FabricationCommandValidator.new
 
     unless validator.valid?(command)
-    raise "Invalid fabrication command"
+      raise InvalidFabricationCommandError, "Invalid fabrication command"
     end
 
     FabricationService.new.create_cube(command["size_mm"])
-
   end
 end
