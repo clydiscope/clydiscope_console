@@ -147,7 +147,7 @@ class FabricationOrchestratorTest < ActiveSupport::TestCase
     begin
       FabricationInterpreter.define_singleton_method(:new) { fake_interpreter }
 
-      assert_raises(JSON::ParserError) do
+      assert_raises(InvalidAIResponseError) do
         FabricationOrchestrator.new.create("Make me a 20 mm cube")
       end
     ensure

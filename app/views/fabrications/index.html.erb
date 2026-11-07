@@ -8,11 +8,17 @@
   <%= form.label :prompt, "Fabrication instruction" %>
 
   <%= form.text_field :prompt,
-      value: "Make me a 20 mm cube" %>
+                      value: "Make me a 20 mm cube" %>
 
   <%= form.submit "Generate STL" %>
 
   
+<% end %>
+
+<% if @error %>
+  <p style="color: red;">
+    <%= @error %>
+  </p>
 <% end %>
 
 <% if @result %>
@@ -26,6 +32,6 @@
   <p>STL generated successfully!</p>
 
   <%= link_to "Download STL",
-      "/fabrication/download" %>
+        "/fabrication/download?job_id=#{@job_id}" %>
 <% end %>
 <% end %>

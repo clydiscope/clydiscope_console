@@ -19,5 +19,7 @@ class FabricationOrchestrator
     end
 
     FabricationService.new.create_cube(command["size_mm"])
+  rescue JSON::ParserError
+    raise InvalidAIResponseError, "Orko returned malformed JSON"
   end
 end
